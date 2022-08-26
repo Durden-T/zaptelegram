@@ -59,22 +59,26 @@ func NewTelegramHook(token string, chatIDs []int, opts ...Option) (*TelegramHook
 	return h, nil
 }
 
-func (h TelegramHook) GetHook() func(zapcore.Entry) error {
+func (h TelegramHook) GetHook() func(e zapcore.Entry) error {
 	return func(e zapcore.Entry) error {
 		if !h.isActualLevel(e.Level) {
 			return nil
-		} else if h.async {
-			go func() {
-				_ = h.telegramClient.sendMessage(e)
-			}()
-			return nil
-		} else if h.queue {
-			h.entriesChan <- e
-			return nil
-		} else if err := h.telegramClient.sendMessage(e); err != nil {
-			return err
 		}
-		return nil
+
+		if !zapcore.DPanicLevel.Enabled(e.Level) {
+			if h.async {
+				go func() {
+					_ = h.telegramClient.sendMessage(e)
+				}()
+				return nil
+			}
+			if h.queue {
+				h.entriesChan <- e
+				return nil
+			}
+		}
+
+		return h.telegramClient.sendMessage(e)
 	}
 }
 
