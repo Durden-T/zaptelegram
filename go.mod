@@ -1,4 +1,4 @@
-module github.com/strpc/zaptelegram
+module github.com/Durden-T/zaptelegram
 
 go 1.17
 

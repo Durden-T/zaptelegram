@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/strpc/zaptelegram"
+	"github.com/Durden-T/zaptelegram"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )

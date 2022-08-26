@@ -4,7 +4,7 @@ Hook for sending events to telegram for zap logger.
 
 
 Install:  
-`go get -u github.com/strpc/zaptelegram`
+`go get -u github.com/Durden-T/zaptelegram`
 
 
 Basic usage:
@@ -14,7 +14,7 @@ package main
 import (
 	"time"
 	
-	"github.com/strpc/zaptelegram"
+	"github.com/Durden-T/zaptelegram"
 	"go.uber.org/zap"
 )
 
@@ -43,7 +43,7 @@ import (
 	"context"
 	"time"
 	
-	"github.com/strpc/zaptelegram"
+	"github.com/Durden-T/zaptelegram"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )

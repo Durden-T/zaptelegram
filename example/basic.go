@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	"github.com/strpc/zaptelegram"
+	"github.com/Durden-T/zaptelegram"
 	"go.uber.org/zap"
 )
 
