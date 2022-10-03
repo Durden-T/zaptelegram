@@ -61,9 +61,11 @@ func (c *telegramClient) sendMessage(e zapcore.Entry) error {
 		ChatID              int    `json:"chat_id"`
 		Text                string `json:"text"`
 		DisableNotification bool   `json:"disable_notification"`
+		ParseMode           string `json:"parse_mode"`
 	}{
 		Text:                c.formatMessage(e),
 		DisableNotification: c.disabledNotification,
+		ParseMode:           "HTML",
 	}
 	for _, chatID := range c.chatIDs {
 		body.ChatID = chatID

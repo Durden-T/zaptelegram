@@ -77,7 +77,6 @@ func (h TelegramHook) GetHook() func(e zapcore.Entry) error {
 				return nil
 			}
 		}
-
 		return h.telegramClient.sendMessage(e)
 	}
 }
